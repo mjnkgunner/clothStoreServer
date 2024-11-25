@@ -8,8 +8,9 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async createUser(@Body() userData: Partial<User>): Promise<User> {
-    return this.usersService.create(userData);
+  async createUser(@Body() userData: Partial<User>): Promise<{ status: number; user: User }> {
+    const result = await this.usersService.create(userData);
+    return { status: result.status, user: result.user };
   }
 
   @Get()

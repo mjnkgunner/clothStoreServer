@@ -12,3 +12,10 @@ export class AuthController {
     return this.authService.login(loginDto.username, loginDto.password);
   }
 }
+
+// jwt
+// async login(
+//   @Body() loginDto: { username: string; password: string },
+// ): Promise<{ accessToken: string }> {
+//   return this.authService.login(loginDto.username, loginDto.password);
+// }

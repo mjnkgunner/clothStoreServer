@@ -9,9 +9,10 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   // Create a new user
-  async create(userData: Partial<User>): Promise<User> {
+  async create(userData: Partial<User>): Promise<{ status: number; user: User }> {
     const newUser = new this.userModel(userData);
-    return newUser.save();
+    await newUser.save();
+    return { status: 200, user: newUser };
   }
 
   // Get all users
