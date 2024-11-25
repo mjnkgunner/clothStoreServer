@@ -44,10 +44,6 @@ export class UsersService {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
   }
-  async register(userData: Partial<User>): Promise<User> {
-    const newUser = new this.userModel(userData);
-    return newUser.save();
-  }
   
   async findByUsername(username: string): Promise<User | null> {
     return this.userModel.findOne({ username }).exec();
